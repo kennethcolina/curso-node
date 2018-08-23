@@ -1,11 +1,7 @@
-const express = require('express');
-const app = express();
-const msg = require('./mod_teste')();
+const app = require('./config/server');
 
-app.set('view engine', 'ejs');
+const rotaHome = require('./app/routes/home')(app);
+const rotaFormulario_inclusao_noticia = require('./app/routes/formulario_inclusao_noticia')(app);
+const rotaNoticia = require('./app/routes/noticia')(app);
 
-app.get('/', (req, res) => res.render('home/index'));
-app.get('/formulario_inclusao_noticia', (req, res) => res.render('admin/form_add_noticia'));
-app.get('/noticia', (req, res) => res.render('noticias/noticia'));
-
-app.listen(3000, () => console.log(msg));
+app.listen(3000, () => console.log('Servidor ON'));
