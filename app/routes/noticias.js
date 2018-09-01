@@ -8,7 +8,7 @@ const noticias = app => {
 
             if(error) console.error(error);
 
-            res.render('./noticias/noticia', { noticias: result });
+            res.render('./noticias/noticias', { noticias: result });
 
         });
 
