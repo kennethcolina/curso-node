@@ -1,10 +1,11 @@
-const noticia = app => {
+const noticia = application => {
 
-    app.get('/noticia', (req, res) => {
+    application.get('/noticia', (req, res) => {
 
-        const connection = app.config.dbConnection();
+        const connection = application.config.dbConnection();
+        const noticiasModel = new application.app.models.noticiasDAO(connection);
 
-        connection.query('select * from noticias where id_noticia = 2', (error, result) => {
+        noticiasModel.getNoticia((error, result) => {
 
             if(error) console.error(error);
 

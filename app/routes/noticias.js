@@ -1,10 +1,11 @@
-const noticias = app => {
+const noticias = application => {
     
-    app.get('/noticias', (req, res) => {
+    application.get('/noticias', (req, res) => {
 
-        const connection = app.config.dbConnection();
+        const connection = application.config.dbConnection();
+        const noticiasModel = new application.app.models.noticiasDAO(connection);
 
-        connection.query('select * from noticias', (error, result) => {
+        noticiasModel.getNoticias((error, result) => {
 
             if(error) console.error(error);
 
